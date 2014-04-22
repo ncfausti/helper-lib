@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data coloerator</title>
+	<script src="jquery-2.1.0.min.js"></script>
+	<script>
+	Array.max = function ( array ) { return Math.max.apply(Math, array); };
+	Array.min = function ( array ) { return Math.min.apply(Math, array); };
+
+	function createGradient(numbers, steps) {
+		if(!steps){
+			steps = 5;
+		}
+		var numData = [];
+		data = numbers.split('\n');
+
+		for(var i = 1; i < data.length-1; i++)
+			numData.push(parseInt(data[i]));
+		
+
+		var min = Array.min( numData );
+		var max = Array.max( numData );
+
+		var interval = Math.floor(( (max - min) / steps ));
+		var colors = [ "0000A0","2A0085","55006A","7F0050","AA0035","D4001A", "FF0000" ];
+
+		var counter = -1;
+
+		numData.sort();
+		for( var i = min; i < (numData.length); i += interval ) {
+			counter += 1;
+			if (counter == steps)
+				console.log( i + " - " + max +  " " + colors[counter] );
+			else
+				console.log( i + " - " + (i + interval - 1 ) + " " + colors[counter] );
+		}
+
+	}
+
+	$( document ).ready(function() {
+  		$("#goBtn").click(function(){
+  			createGradient($("#nums").val());
+  		})
+	});
+</script>
+</head>
+<body>
+Prints to console at the moment...<br><br>
+<textarea id="nums">
+
+</textarea>
+<input id="goBtn" type="button" value="Go" />
+</body>
+</html>
