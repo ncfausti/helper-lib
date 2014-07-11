@@ -32,3 +32,6 @@ def printBMI(hList,wList):
             #print("{}\t{}\t".format(calculateMetricBMI(inchesToMeters( int(h[0:2]) ), int(w[0:-3]) ) , " ")),
         else:
             print w
+
+def monthToNumber():
+    return {'MAR': '03', 'FEB': '02', 'AUG': '08', 'SEP': '09', 'APR': '04', 'JUN': '06', 'JUL': '07', 'JAN': '01', 'MAY': '05', 'NOV': '11', 'DEC': '12', 'OCT': '10'}
