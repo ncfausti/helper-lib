@@ -14,3 +14,14 @@ String.prototype.format = String.prototype.f = function() {
     }
     return s;
 };
+
+// Cycle through items in an array on click in angular
+var counter = 0;
+    var names = ['Igor', 'Misko', 'Chirayu', 'Lucas'];
+    
+    // expose the event object to the scope
+     
+    $scope.clickMe = function(clickEvent) {
+      $scope.name = names[counter % names.length];
+      counter++;
+    };
