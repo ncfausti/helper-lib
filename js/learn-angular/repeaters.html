@@ -1,0 +1,20 @@
+<tbody>
+    <tr ng-repeat"product in products" ng-class="{oddRow: $odd}">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+    </tr>
+</tbody>
+
+
+<!--
+
+In addition to this, Angular exposes several variables that allow you to gain information about the element currently being iterated on.
+
+$index - The index of the current element.
+$first - Boolean indicating if the element is first in the collection.
+$middle - Boolean indicating if the element is neither first nor last in the collection.
+$last - Boolean indicating if the element is last in the collection.
+$even - Boolean indicating if the element's index is even.
+$odd - Boolean indicating if the element's index is odd.
+
+-->

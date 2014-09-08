@@ -1,0 +1,59 @@
+<html ng-app='myApp'>
+<body>
+
+  <form ng-controller="StartUpController">
+  Starting: <input ng-change="computeNeeded()"
+             ng-model="funding.startingEstimate">
+  Recommendation: {{funding.needed}}
+  <button ng-click="requestFunding()">Fund my startup!</button>
+  <button ng-click="reset()">Reset</button>
+	</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js">
+</script>
+
+
+<script>
+var myApp = angular.module("myApp",[]);
+
+function StartUpController($scope) {
+  $scope.funding = { startingEstimate: 0 };
+  $scope.computeNeeded = function() {
+    $scope.funding.needed = $scope.funding.startingEstimate * 10;
+  };
+
+  $scope.requestFunding = function() {
+    window.alert("Sorry, please get more customers first, then we will give you " + $scope.funding.needed);
+  };
+
+  $scope.reset = function() {
+    $scope.funding.startingEstimate = 0;
+    $scope.funding.needed = 0;
+  };
+
+  $scope.filter
+}
+
+// Try to implement angular filters in shopping cart instead
+// of adding/removing css classes
+
+// Custom filters are nice, use them
+
+
+/*  Cycle through elements in an array efficiently
+
+var counter = 0;
+    var names = ['Igor', 'Misko', 'Chirayu', 'Lucas'];
+    
+    // expose the event object to the scope
+     
+    $scope.clickMe = function(clickEvent) {
+      $scope.name = names[counter % names.length];
+      counter++;
+    };
+*/
+
+</script>
+
+</body>
+</html>
