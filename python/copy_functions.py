@@ -1,3 +1,5 @@
+import subprocess
+
 def getClipboard():
     p = subprocess.Popen(['pbpaste'], stdout=subprocess.PIPE)
     retcode = p.wait()
