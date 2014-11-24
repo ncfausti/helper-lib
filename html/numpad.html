@@ -10,28 +10,76 @@
 		<style>
 		
 		/* Override bootstrap styles here */
+		body
+		{
+			text-align:center;
+		}
+
+		button 
+		{
+			height: 120px;
+			width: 120px;
+			font-size: 3em;
+			margin: 3px;
+		}
 		
+		#pin-entry
+		{
+			height: 42px;
+			width: 364px;
+			font-size: 30px;
+		}
+
 		</style>
 
 		<script>
+		var Numpad = {};
+		Numpad.pinLength = 4; // Limit on pinlength
 
-			// put dollar sign in front
-		(function() {
+		// put dollar sign in front
+		$(function() {
 		    // Document.ready code here
+		    var pin = $("#pin-entry");
+
+			$('.numberBtn').click( function(){ 
+				if ( pin.val().length  < Numpad.pinLength ){
+					pin.val(pin.val() + this.innerHTML); 	
+				}
+
+				// Submit form
+				if( pin.val().length  === 4){
+					1 + 1;
+					//form.submit()
+
+				}
+			});
+
+			$('#backspaceBtn').click( function() { pin.val( pin.val().substr(0, pin.val().length - 1)); });
+			$('#clearBtn').click(function() { pin.val(''); });
 		});
+
+		
 		</script>
 
 	</head>
 	<body>
-		<button>1</button>
-		<button>2</button>
-		<button>3</button>
-		<button>4</button>
-		<button>5</button>
-		<button>6</button>
-		<button>7</button>
-		<button>1</button>
-		<button>9</button>
-		<button>0</button>
+	<input type="text" id="pin-entry" maxlength="4" />
+	<div id="numpad">
+		<button class="btn-success numberBtn">1</button>
+		<button class="btn-success numberBtn">2</button>
+		<button class="btn-success numberBtn">3</button>
+		<br>
+		<button class="btn-success numberBtn">4</button>
+		<button class="btn-success numberBtn">5</button>
+		<button class="btn-success numberBtn">6</button>
+		<br>
+		<button class="btn-success numberBtn">7</button>
+		<button class="btn-success numberBtn">8</button>
+		<button class="btn-success numberBtn">9</button>
+		<br>
+		<button class="btn-warning" id="backspaceBtn">Back</button>
+		<button class="btn-success numberBtn">0</button>
+		<button class="btn-danger" id="clearBtn">Clear</button>
+	</div>
 	</body>
 </html>
