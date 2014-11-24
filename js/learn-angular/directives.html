@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Directives</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/css/foundation.css" rel="stylesheet" />
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+
+
+<div ng-app="superhero">
+hi
+<superman></superman>
+<div batman></div>
+
+<div enter="panel" leave>I'm content</div>
+</div>
+
+
+<script>
+var app = angular.module('superhero', []);
+
+
+// Creates superman directive
+app.directive('superman', function(){
+  return {
+    restrict: "E",  //A is for attribute, E is for Element, C is for class
+    template: "<div>This is my first directive</div>"
+  }
+});
+
+// Batman attribute directive
+app.directive('batman', function(){
+  return {
+    restrict: "A",  //A is for attribute, E is for Element, C is for class
+    link: function() {
+      alert("I'm batman");
+    }
+  }
+});
+
+// Restrict defaults to A (attribute) if not added
+app.directive('enter', function(){
+  return function(scope, element, attrs){
+    element.bind('mouseenter', function(){
+      element.addClass(attrs.enter);
+      console.log("I'm inside of you.")
+    })
+  }
+});
+app.directive('leave', function(){
+  return function(scope, element, attrs){
+    element.bind('mouseleave', function(){
+      element.removeClass(attrs.enter);
+      console.log("I'm leaving you.")
+    })
+  }
+});
+</script>
+</body>
+</html>
